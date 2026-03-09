@@ -1,6 +1,20 @@
+/*
+===============================================================================
+DDL Script: Create Silver Tables
+===============================================================================
+Script Purpose:
+    This script creates tables in the 'silver' schema. 
+    The Silver layer is responsible for:
+    - Data Cleansing (Handling NULLs and Duplicates).
+    - Standardizing Data Types (Converting Strings to Dates/Numbers).
+    - Business Logic Validation (Ensuring Price * Qty = Sales).
+===============================================================================
+*/
 
 
-
+-------------------------------------------------------------------------------
+-- 1) CRM Tables (Cleaned & Standardized)
+-------------------------------------------------------------------------------
 
 IF OBJECT_ID ('silver.crm_prd_info', 'U') IS NOT NULL
 	DROP TABLE silver.crm_prd_info;
@@ -29,6 +43,12 @@ CREATE TABLE silver.crm_sls_details (
 	sls_due_dt	 	 DATE,
 	sls_sales		   INT,
 	sls_quantity	 INT,
-	sls_price		   INT,
-	wh_create_date DATETIME2 DEFAULT GETDATE()
-);
+
+
+
+
+
+-------------------------------------------------------------------------------
+-- 2) ERP Tables (Standardized for Integration)
+-------------------------------------------------------------------------------
+
